@@ -1,7 +1,7 @@
 project(binbloom)
 cmake_minimum_required(VERSION 3.10)
 
-add_executable(binbloom binbloom.c getopt.c)
+add_executable(binbloom binbloom.c getopt.c ctz_clz.c)
 target_include_directories(binbloom SYSTEM PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 if(NOT MSVC)
