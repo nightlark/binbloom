@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 3.10)
 
 add_executable(binbloom binbloom.c)
 
-target_compile_options(binbloom PUBLIC -Wall -Wextra -O3)
+if(NOT MSVC)
+  target_compile_options(binbloom PUBLIC -Wall -Wextra -O3)
+endif()
 
 install(TARGETS binbloom DESTINATION "bin")
 install(DIRECTORY IDA_script DESTINATION "share/binbloom")
