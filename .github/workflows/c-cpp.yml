@@ -1,0 +1,35 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: configure
+      run: |
+        mkdir build
+        cd build
+        cmake -G "Visual Studio 16 2019" -A "x64" -DCMAKE_BUILD_TYPE=Release ..
+    - name: build
+      run: |
+        cd build
+        cmake --build . --config Release
+    - name: package
+      run: |
+        cd build
+        cpack_dir="$(command -v cmake)"
+        cpack_dir="${cpack_dir%/cmake}"
+        "${cpack_dir}/cpack" -G "ZIP" -C Release -B "$(pwd)/../artifact"
+    - name: upload
+      uses: actions/upload-artifact@v2
+      with:
+        name: binbloom-win64
+        path: artifact/*.zip
