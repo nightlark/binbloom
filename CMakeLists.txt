@@ -1,7 +1,7 @@
 project(binbloom)
 cmake_minimum_required(VERSION 3.10)
 
-add_executable(binbloom binbloom.c)
+add_executable(binbloom binbloom.c getopt.c)
 
 if(NOT MSVC)
   target_compile_options(binbloom PUBLIC -Wall -Wextra -O3)
