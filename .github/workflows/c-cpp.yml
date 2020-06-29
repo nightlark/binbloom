@@ -13,11 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: get dependencies
+      run: |
+        git clone https://github.com/robinrowe/libunistd
     - name: configure
       run: |
         mkdir build
         cd build
-        cmake -G "Visual Studio 16 2019" -A "x64" -DCMAKE_BUILD_TYPE=Release ..
+        cmake -G "Visual Studio 16 2019" -A "x64" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INCLUDE_PATH="$(pwd)/../libunistd/unistd ..
     - name: build
       run: |
         cd build
