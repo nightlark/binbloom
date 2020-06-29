@@ -20,7 +20,7 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake -G "Visual Studio 16 2019" -A "x64" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INCLUDE_PATH="$(pwd)/../libunistd/unistd" ..
+        cmake -G "Visual Studio 16 2019" -A "x64" -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_INCLUDE_PATH="$(pwd)/../libunistd/unistd" ..
     - name: build
       run: |
         cd build
