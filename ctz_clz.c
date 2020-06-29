@@ -1,5 +1,6 @@
 #ifdef _MSC_VER
 #include <intrin.h>
+#include <stdint.h>
 
 static inline int __builtin_ctz(unsigned x) {
     unsigned long ret;
